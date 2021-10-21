@@ -4,7 +4,7 @@ import { renderAppAsString }  from './App';
 const handler: Handler = async (event, context) => {
   return {
     statusCode: 200,
-    body: renderAppAsString(event.path),
+    body: await renderAppAsString(event.path),
   };
 };
 

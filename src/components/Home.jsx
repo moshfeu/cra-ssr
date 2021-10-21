@@ -1,21 +1,17 @@
+import React from 'react';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-type HomeData = {
-  id: number;
-  title: string;
-}[];
-
-export const getData = async (fetchMethod: (url: string) => Promise<any>) => {
+export const getData = async (fetchMethod) => {
   const todos = ((await (
     await fetchMethod('https://jsonplaceholder.typicode.com/todos')
-  ).json()) as HomeData).slice(0, 5);
+  ).json())).slice(0, 5);
 
   return todos;
 };
 
-export const Home = ({ ssrData }: { ssrData: HomeData }) => {
-  const [items, setItems] = useState<HomeData>(ssrData);
+export const Home = ({ ssrData }) => {
+  const [items, setItems] = useState(ssrData);
 
   useEffect(() => {
     if (ssrData) {

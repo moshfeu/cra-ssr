@@ -1,9 +1,10 @@
+import React from 'react';
 import { useEffect, useRef } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { Home } from './Home';
 import { User } from './User';
 
-export const Routes = ({ ssrData }: { ssrData: any }) => {
+export const Routes = ({ ssrData }) => {
   const data = useRef(ssrData);
 
   useEffect(() => {

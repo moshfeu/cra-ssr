@@ -9,17 +9,16 @@ import { StaticRouter } from 'react-router-dom';
 
 import { Routes } from '../../src/components/Routes';
 
-export const renderAppAsString = async (/** @type {string} */ url) => {
+export const renderAppAsString = async (/** @type {import('express').Request} */ request, ssrData) => {
   let template;
   if (process.env.NODE_ENV === 'production') {
-    readFileSync(path.resolve('build/index.html'), 'utf8')
+    template = readFileSync(path.resolve('build/index.html'), 'utf8')
   } else {
     template = await fetch(`http://localhost:3000`).then((res) => res.text());
   }
-  const ssrData = { id: 1, title: 'test' };
   try {
     const reactPart = ReactDOMServer.renderToString(
-      <StaticRouter location={url} context={{}}>
+      <StaticRouter location={request.url} context={{}}>
         <Routes ssrData={ssrData} />
       </StaticRouter>
     );

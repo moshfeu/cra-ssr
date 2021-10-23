@@ -5,12 +5,8 @@
   publish = "build"
 
   [[redirects]]
-    from = "/s/*"
-    to = "/.netlify/functions/profile/:splat"
-    status = 200
-  [[redirects]]
     from = "/*"
-    to = "/index.html"
+    to = "/.netlify/functions/index"
     status = 200
 
 

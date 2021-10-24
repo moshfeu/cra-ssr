@@ -1,5 +1,0 @@
-{
-  "ext": "ts,tsx",
-  "watch": "src",
-  "exec": "yarn build"
-}

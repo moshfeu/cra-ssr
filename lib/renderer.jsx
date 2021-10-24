@@ -7,12 +7,15 @@ import React from 'react';
 import ReactDOMServer from 'react-dom/server.js';
 import { StaticRouter } from 'react-router-dom';
 
-import { Routes } from '../../src/components/Routes';
+import { Routes } from '../src/components/Routes';
 
-export const renderAppAsString = async (/** @type {import('express').Request} */ request, ssrData) => {
+export const renderAppAsString = async (
+  /** @type {import('express').Request} */ request,
+  ssrData
+) => {
   let template;
   if (process.env.NODE_ENV === 'production') {
-    template = readFileSync(path.resolve('build/index.html'), 'utf8')
+    template = readFileSync(path.resolve('build/index.html'), 'utf8');
   } else {
     template = await fetch(`http://localhost:3000`).then((res) => res.text());
   }

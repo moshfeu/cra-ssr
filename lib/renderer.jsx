@@ -14,10 +14,10 @@ export const renderAppAsString = async (
   ssrData
 ) => {
   let template;
-  if (process.env.NODE_ENV === 'production') {
-    template = readFileSync(path.resolve('build/index.html'), 'utf8');
-  } else {
+  if (process.env.CI !== 'true') {
     template = await fetch(`http://localhost:3000`).then((res) => res.text());
+  } else {
+    template = readFileSync(path.resolve('build/index.html'), 'utf8');
   }
   try {
     const reactPart = ReactDOMServer.renderToString(

@@ -12,7 +12,7 @@ const createApp = () => {
   app.use(async (req, res, next) => {
     const pathname = req.path;
     if (pathname.startsWith('/static/')) {
-      if (process.env.NODE_ENV !== 'production') {
+      if (process.env.CI !== 'true') {
         const file = await fetch(`http://localhost:3000/${pathname}`).then(
           (res) => res.text()
         );

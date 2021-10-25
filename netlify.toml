@@ -9,6 +9,9 @@
     to = "/.netlify/functions/index"
     status = 200
 
+[functions]
+  external_node_modules = ["express"]
+
 
   ## (optional) Settings for Netlify Dev
   ## https://github.com/netlify/cli/blob/main/docs/netlify-dev.md#project-detection

@@ -3,9 +3,9 @@ import fs from 'fs';
 import path from 'path';
 
 const handler: Handler = async (event, context) => {
-  const p = event.queryStringParameters.p = '';
+  const p = event.queryStringParameters.p || '';
   let relativePath = '',
-      relativePathFiles = [];
+  relativePathFiles = [];
 
   try {
     relativePath = path.resolve(__dirname, p);

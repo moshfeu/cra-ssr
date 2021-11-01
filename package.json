@@ -25,7 +25,7 @@
     "start:csr": "react-scripts start",
     "start:netlify": "netlify dev",
     "start:node": "ts-node server/start.ts",
-    "build": "react-scripts build && cp -R build netlify/functions",
+    "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

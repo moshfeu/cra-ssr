@@ -9,11 +9,12 @@ const handler: Handler = async (event, context) => {
 
   try {
     relativePath = path.resolve(__dirname, p);
-    relativePathFiles = fs.readdirSync(path.resolve(__dirname, p))
+    relativePathFiles = fs.readdirSync(path.resolve(p, __dirname))
   } catch (error) {
     relativePath = error;
   }
   const body = {
+    p: event.queryStringParameters.p,
     dirName: __dirname,
     files: fs.readdirSync(__dirname),
     relativePath,

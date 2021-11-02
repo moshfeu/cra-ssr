@@ -11,7 +11,7 @@
 
 [functions]
   external_node_modules = ["express"]
-  included_files = ["build"]
+  included_files = ["build", "test"]
 
 
   ## (optional) Settings for Netlify Dev

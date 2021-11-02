@@ -1,0 +1,7 @@
+{
+  "name": "Create React App + SSR",
+  "description": "A cra project with SSR support",
+  "repository": "https://github.com/moshfeu/cra-ssr",
+  "logo": "https://raw.githubusercontent.com/moshfeu/cra-ssr/main/assets/logo.jpeg",
+  "keywords": ["cra", "ssr", "react", "create react app"]
+}

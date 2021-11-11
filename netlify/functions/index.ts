@@ -11,9 +11,12 @@ const handler = async (event, context) => {
   let pathFiles = [], pathFiles1 = [];
   try {
     pathFiles = readdirSync(path);
-    pathFiles1 = readdirSync(path1);
   } catch (err) {
     pathFiles = [err.message];
+  }
+  try {
+    pathFiles1 = readdirSync(path1);
+  } catch (err) {
     pathFiles1 = [err.message];
   }
   const body = {

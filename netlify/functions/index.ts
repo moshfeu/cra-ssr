@@ -3,8 +3,8 @@ import { resolve } from 'path';
 import serverless from 'serverless-http';
 import { createApp } from '../../lib/express-app';
 
-const path = resolve(__filename, '../../build');
-const path1 = resolve(__dirname, '../../build');
+const path = resolve(__filename, '../../../build');
+const path1 = resolve(__dirname, '../../../build');
 console.log(2222222, path);
 
 const handler = async (event, context) => {

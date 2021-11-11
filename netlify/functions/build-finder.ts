@@ -16,6 +16,7 @@ const handler: Handler = async (event, context) => {
   const body = {
     p: event.queryStringParameters.p,
     dirName: __dirname,
+    fileName: __filename,
     files: fs.readdirSync(__dirname),
     relativePath,
     relativePathFiles,

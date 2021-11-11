@@ -1,6 +1,6 @@
 # example netlify.toml
 [build]
-  command = "react-scripts build && cp -R build netlify/functions && ls -al netlify/functions/build"
+  command = "yarn build"
   functions = "netlify/functions"
   publish = "build"
 
@@ -11,14 +11,14 @@
 
 [functions]
   external_node_modules = ["express"]
-  included_files = ["build", "test"]
+  included_files = ["build/**"]
 
 
   ## (optional) Settings for Netlify Dev
   ## https://github.com/netlify/cli/blob/main/docs/netlify-dev.md#project-detection
-  #[dev]
-  #  command = "yarn start" # Command to start your dev server
-  #  port = 3000 # Port that the dev server will be listening on
-  #  publish = "dist" # Folder with the static content for _redirect file
+  [dev]
+    command = "yarn start:csr" # Command to start your dev server
+    port = 3001 # Port that the dev server will be listening on
+    publish = "dist" # Folder with the static content for _redirect file
 
   ## more info on configuring this file: https://www.netlify.com/docs/netlify-toml-reference/

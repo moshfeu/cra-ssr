@@ -3,9 +3,9 @@ import fetch from 'node-fetch';
 
 export const getStatic = async ({
   buildFolderPath,
-  pathname = ''
+  pathname = '',
 }: {
-  buildFolderPath?: string,
+  buildFolderPath?: string;
   pathname?: string;
 }): Promise<string> => {
   if (process.env.CI !== 'true') {
@@ -13,5 +13,8 @@ export const getStatic = async ({
     return await res.text();
   }
 
-  return readFileSync(`${buildFolderPath}${pathname}`, 'utf8');
-}
+  return readFileSync(
+    `${buildFolderPath}${!buildFolderPath.endsWith('/') ? '/' : ''}${pathname}`,
+    'utf8'
+  );
+};

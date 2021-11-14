@@ -5,21 +5,17 @@ import path from 'path';
 import { flush } from './flush';
 import { getData as getHomeData } from '../src/components/Home';
 import { getData as getUserData } from '../src/components/User';
+import { getStatic } from './get-static';
 
 const app = express();
 
-const createApp = () => {
+const createApp = (buildFolderPath: string) => {
   app.use(async (req, res, next) => {
     const pathname = req.path;
-    if (pathname.startsWith('/static/')) {
-      if (process.env.CI !== 'true') {
-        const file = await fetch(`http://localhost:3000/${pathname}`).then(
-          (res) => res.text()
-        );
-        res.send(file);
-      } else {
-        res.sendFile(path.join(__dirname, '..', 'build', pathname));
-      }
+    if (pathname.startsWith('/static/') || path.extname(req.path)) {
+      res.end(
+        await getStatic({pathname, buildFolderPath})
+      );
       return;
     }
     next();
@@ -27,12 +23,12 @@ const createApp = () => {
 
   app.get('/s/:id', async (req, res) => {
     const todo = await getUserData(fetch, req.params.id);
-    flush(res, req, todo);
+    flush(buildFolderPath, res, req, todo);
   });
 
   app.get('/', async (req, res) => {
     const todos = await getHomeData(fetch);
-    flush(res, req, todos);
+    flush(buildFolderPath, res, req, todos);
   });
 
   return app;

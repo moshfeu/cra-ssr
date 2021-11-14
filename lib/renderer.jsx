@@ -1,24 +1,17 @@
 // @ts-check
-import { readFileSync } from 'fs';
-import fetch from 'node-fetch';
-import path from 'path';
-
 import React from 'react';
 import ReactDOMServer from 'react-dom/server.js';
 import { StaticRouter } from 'react-router-dom';
 
 import { Routes } from '../src/components/Routes';
+import { getStatic } from './get-static';
 
 export const renderAppAsString = async (
+  /** @type {string} buildFolderPath */ buildFolderPath,
   /** @type {import('express').Request} */ request,
-  ssrData
+  /** @type {Record<string, any>} ssrData */ ssrData
 ) => {
-  let template;
-  if (process.env.CI !== 'true') {
-    template = await fetch(`http://localhost:3000`).then((res) => res.text());
-  } else {
-    template = readFileSync(path.resolve('build/index.html'), 'utf8');
-  }
+  const template = await getStatic({buildFolderPath, pathname: 'index.html'});
   try {
     const reactPart = ReactDOMServer.renderToString(
       <StaticRouter location={request.url} context={{}}>

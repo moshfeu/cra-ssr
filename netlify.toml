@@ -8,6 +8,7 @@
     from = "/*"
     to = "/.netlify/functions/index"
     status = 200
+    force = true
 
 [functions]
   external_node_modules = ["express"]

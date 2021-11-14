@@ -22,11 +22,16 @@ yarn start:node
 
 <div>Heroku app's logo stamp created by <a href="https://www.designevo.com/" title="Free Online Logo Maker">DesignEvo logo maker</a></div>
 
-### Netlify
+#### Netlify
 
 ```
 yarn start:netlify
 ```
+
+
+<a href="https://app.netlify.com/start/deploy?repository=https://github.com/moshfeu/cra-ssr#CI=true">
+  <img src="https://www.netlify.com/img/deploy/button.svg" alt="deploy to netlify">
+</a>
 
 ### Client side rendering
 
